@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 import Home from './pages/Home';
 import Profile from './pages/Profile';
-import Header from './components/Header';
+import Navbar from "./components/Navbar";
 import Footer from './components/Footer';
 
 const client = new ApolloClient({
@@ -18,18 +18,18 @@ function App() {
       {/* Wrap page elements in Router component to keep track of location state */}
       <Router>
         <div className="flex-column justify-flex-start min-100-vh">
-          <Header />
+          <Navbar />
           <div className="container">
             <Routes>
               {/* Define routes to render different page components at different paths */}
-              <Route 
-                path="/" 
-                element={<Home />} 
+              <Route
+                path="/"
+                element={<Home />}
               />
               {/* Define a route that will take in variable data */}
-              <Route 
-                path="/profiles/:profileId" 
-                element={<Profile />} 
+              <Route
+                path="/profiles/:profileId"
+                element={<Profile />}
               />
             </Routes>
           </div>

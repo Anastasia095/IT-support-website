@@ -3,7 +3,7 @@ import { useQuery } from '@apollo/client';
 
 import ProfileList from '../components/ProfileList';
 import ProfileForm from '../components/ProfileForm';
-
+import ButtonAppBar from '../components/Navbar';
 import { QUERY_PROFILES } from '../utils/queries';
 
 const Home = () => {
@@ -12,12 +12,13 @@ const Home = () => {
 
   return (
     <main>
-      <div className="flex-row justify-center">
+      
+      {/* <div className="flex-row justify-center">
         <div
           className="col-12 col-md-10 mb-3 p-3"
           style={{ border: '1px dotted #1a1a1a' }}
         >
-          <ProfileForm />
+          <ButtonAppBar />
         </div>
 
         <div className="col-12 col-md-10 my-3">
@@ -30,7 +31,7 @@ const Home = () => {
             />
           )}
         </div>
-      </div>
+      </div> */}
     </main>
   );
 };

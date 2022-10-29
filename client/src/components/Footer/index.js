@@ -19,7 +19,7 @@ const Footer = () => {
             &larr; Go Back
           </button>
         )}
-        <h4>&copy; {new Date().getFullYear()} - Tech Friends</h4>
+        <h4>&copy; {new Date().getFullYear()} - CompLogic, LLC. All Rights Reserved.</h4>
       </div>
     </footer>
   );

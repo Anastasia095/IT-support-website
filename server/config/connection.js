@@ -1,11 +1,19 @@
-const mongoose = require('mongoose');
+const Sequelize = require('sequelize');
 
-mongoose.connect(
-  process.env.MONGODB_URI || 'mongodb://127.0.0.1:27017/tech-friends-ins-demo',
+// Create a connection object
+const sequelize = new Sequelize(
+  // Database name
+  'complogic_db',
+  // User
+  'root',
+  // Password
+  'root',
   {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
+    // Database location
+    host: 'localhost',
+    dialect: 'mysql',
+    port: 3306
   }
 );
 
-module.exports = mongoose.connection;
+module.exports = sequelize;
