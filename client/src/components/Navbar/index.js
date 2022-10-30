@@ -9,8 +9,10 @@ import { Menu as MenuIcon } from "@material-ui/icons";
 import AlternateEmailIcon from '@mui/icons-material/AlternateEmail';
 import LocalPhoneIcon from '@mui/icons-material/LocalPhone';
 import SupportIcon from '@mui/icons-material/Support';
-import MenuItem from '@mui/material/MenuItem';
-import Menu from '@mui/material/Menu';
+import List from "@mui/material/List";
+import ListItem from "@mui/material/ListItem";
+import ListItemButton from "@mui/material/ListItemButton";
+import Drawer from "@mui/material/Drawer";
 
 const style = {
   m: 2,
@@ -26,39 +28,51 @@ function Navbar() {
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
   };
-  const handleClose = () => {
-    setAnchorEl(null);
+
+  const [state, setState] = React.useState({
+    left: false
+  });
+
+  const toggleDrawer = (anchor, open) => (event) => {
+    if (
+      event.type === "keydown" &&
+      (event.key === "Tab" || event.key === "Shift")
+    ) {
+      return;
+    }
+
+    setState({ ...state, [anchor]: open });
   };
 
+  const list = (anchor) => (
+    <Box
+      sx={{ width: anchor === "top" || anchor === "bottom" ? "auto" : 250 }}
+      role="presentation"
+      onClick={toggleDrawer(anchor, false)}
+      onKeyDown={toggleDrawer(anchor, false)}
+    >
+      <List>
+        <ListItem> tgest 1</ListItem>
+        <ListItemButton>Test 2</ListItemButton>
+      </List>
+    </Box>
+  );
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static">
         <Toolbar>
           <IconButton
-            size="large"
             edge="start"
             color="inherit"
             aria-label="menu"
             sx={{ mr: 2 }}
+            onClick={handleClick}
           >
             <MenuIcon id="basic-button"
               aria-controls={open ? 'basic-menu' : undefined}
               aria-haspopup="true"
-              aria-expanded={open ? 'true' : undefined}
-              onClick={handleClick} />
-            <Menu
-              id="basic-menu"
-              anchorEl={anchorEl}
-              open={open}
-              onClose={handleClose}
-              MenuListProps={{
-                'aria-labelledby': 'basic-button',
-              }}
-            >
-              <MenuItem onClick={handleClose}>About Us</MenuItem>
-              <MenuItem onClick={handleClose}>Services</MenuItem>
-              <MenuItem onClick={handleClose}>News/Media</MenuItem>
-            </Menu>
+              aria-expanded={open ? 'true' : undefined} />
+              
           </IconButton>
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
             CompLogic
