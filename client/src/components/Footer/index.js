@@ -28,10 +28,34 @@ const Footer = () => {
             <Typography>
               Contact Us
             </Typography>
+            <Typography display='block' variant='caption'>
+              Link #1
+            </Typography>
+            <Typography display='block' variant='caption'>
+              Link #2
+            </Typography>
+            <Typography display='block' variant='caption'>
+              Link #3
+            </Typography>
+            <Typography display='block' variant='caption'>
+              Link #4
+            </Typography>
           </Grid>
           <Grid item xs={8}>
             <Typography>
               Location
+            </Typography>
+            <Typography display='block' variant='caption'>
+              Link #1
+            </Typography>
+            <Typography display='block' variant='caption'>
+              Link #2
+            </Typography>
+            <Typography display='block' variant='caption'>
+              Link #3
+            </Typography>
+            <Typography display='block' variant='caption'>
+              Link #4
             </Typography>
           </Grid>
         </Grid>

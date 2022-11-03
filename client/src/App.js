@@ -3,9 +3,10 @@ import { ApolloClient, InMemoryCache, ApolloProvider } from '@apollo/client';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 import Home from './pages/Home';
-import Profile from './pages/Profile';
 import Navbar from "./components/Navbar";
 import Footer from './components/Footer';
+import AnimatedCarousel from './components/Carousel';
+import ActionAreaCard from './components/Cards';
 
 const client = new ApolloClient({
   uri: '/graphql',
@@ -19,6 +20,7 @@ function App() {
       <Router>
         <div className="flex-column justify-flex-start min-100-vh">
           <Navbar />
+          {/* <AnimatedCarousel /> */}
           <div className="container">
             <Routes>
               {/* Define routes to render different page components at different paths */}
@@ -27,10 +29,6 @@ function App() {
                 element={<Home />}
               />
               {/* Define a route that will take in variable data */}
-              <Route
-                path="/profiles/:profileId"
-                element={<Profile />}
-              />
             </Routes>
           </div>
           <Footer />

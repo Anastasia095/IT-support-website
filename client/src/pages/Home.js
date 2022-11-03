@@ -1,37 +1,17 @@
 import React from 'react';
-import { useQuery } from '@apollo/client';
-
-import ProfileList from '../components/ProfileList';
-import ProfileForm from '../components/ProfileForm';
-import ButtonAppBar from '../components/Navbar';
-import { QUERY_PROFILES } from '../utils/queries';
+import { Box } from "@material-ui/core";
+import AnimatedCarousel from '../components/Carousel';
+import ActionAreaCard from '../components/Cards';
 
 const Home = () => {
-  const { loading, data } = useQuery(QUERY_PROFILES);
-  const profiles = data?.profiles || [];
-
   return (
     <main>
-      
-      {/* <div className="flex-row justify-center">
-        <div
-          className="col-12 col-md-10 mb-3 p-3"
-          style={{ border: '1px dotted #1a1a1a' }}
-        >
-          <ButtonAppBar />
-        </div>
-
-        <div className="col-12 col-md-10 my-3">
-          {loading ? (
-            <div>Loading...</div>
-          ) : (
-            <ProfileList
-              profiles={profiles}
-              title="Here's the current roster of friends..."
-            />
-          )}
-        </div>
-      </div> */}
+      <AnimatedCarousel />
+      <Box sx={{  display: 'flex', justifyContent: 'space-between' }}>
+        <ActionAreaCard />
+        <ActionAreaCard />
+        <ActionAreaCard />
+      </Box>
     </main>
   );
 };

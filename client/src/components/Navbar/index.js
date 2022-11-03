@@ -1,18 +1,24 @@
 import * as React from 'react';
-import { AppBar } from "@material-ui/core";
-import { Box } from "@material-ui/core";
-import { Toolbar } from "@material-ui/core";
-import { Typography } from "@material-ui/core";
+import {
+  AppBar,
+  Drawer,
+  Box,
+  Toolbar,
+  Typography,
+  IconButton
+} from "@material-ui/core";
 import Button from '@mui/material/Button';
-import { IconButton } from "@material-ui/core";
 import { Menu as MenuIcon } from "@material-ui/icons";
 import AlternateEmailIcon from '@mui/icons-material/AlternateEmail';
 import LocalPhoneIcon from '@mui/icons-material/LocalPhone';
 import SupportIcon from '@mui/icons-material/Support';
-import List from "@mui/material/List";
-import ListItem from "@mui/material/ListItem";
-import ListItemButton from "@mui/material/ListItemButton";
-import Drawer from "@mui/material/Drawer";
+import { useState } from 'react';
+import Link from '@mui/material/Link';
+import List from '@mui/material/List';
+import ListItemButton from '@mui/material/ListItemButton';
+import ListItemText from "@mui/material/ListItemText";
+// import { ThemeProvider, createTheme } from '@mui/material/styles';
+import { MuiThemeProvider, createTheme } from '@material-ui/core/styles';
 
 const style = {
   m: 2,
@@ -20,72 +26,82 @@ const style = {
   borderRadius: 15,
 };
 
+const theme = createTheme({
+  palette: {
+    primary: {
+      //buttons are using main
+      main: '#343434',
+      light: '#36454F',
+      dark: 'white'
+    },
+    secondary: {
+      main: '#191970',
+      light: '#641970',
+      dark: '#1b081f'
+    }
+  },
+});
+
 
 function Navbar() {
 
-  const [anchorEl, setAnchorEl] = React.useState(null);
-  const open = Boolean(anchorEl);
-  const handleClick = (event) => {
-    setAnchorEl(event.currentTarget);
-  };
+  const [isDrawerOpen, setIsDrawerOpen] = useState(false);
 
-  const [state, setState] = React.useState({
-    left: false
-  });
-
-  const toggleDrawer = (anchor, open) => (event) => {
-    if (
-      event.type === "keydown" &&
-      (event.key === "Tab" || event.key === "Shift")
-    ) {
-      return;
-    }
-
-    setState({ ...state, [anchor]: open });
-  };
-
-  const list = (anchor) => (
-    <Box
-      sx={{ width: anchor === "top" || anchor === "bottom" ? "auto" : 250 }}
-      role="presentation"
-      onClick={toggleDrawer(anchor, false)}
-      onKeyDown={toggleDrawer(anchor, false)}
-    >
-      <List>
-        <ListItem> tgest 1</ListItem>
-        <ListItemButton>Test 2</ListItemButton>
-      </List>
-    </Box>
-  );
   return (
-    <Box sx={{ flexGrow: 1 }}>
-      <AppBar position="static">
-        <Toolbar>
-          <IconButton
-            edge="start"
-            color="inherit"
-            aria-label="menu"
-            sx={{ mr: 2 }}
-            onClick={handleClick}
-          >
-            <MenuIcon id="basic-button"
-              aria-controls={open ? 'basic-menu' : undefined}
-              aria-haspopup="true"
-              aria-expanded={open ? 'true' : undefined} />
-              
-          </IconButton>
-          <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-            CompLogic
-          </Typography>
-          <Box display="flex" justifyContent="center" alignItems="center">
-            <Button startIcon={<AlternateEmailIcon />} sx={{ ...style }} variant="contained" size="small">email@sample.com</Button>
-            <Button startIcon={<LocalPhoneIcon />} sx={{ ...style }} variant="contained" size="small">786-483-6751</Button>
-            <Button startIcon={<SupportIcon />} sx={{ ...style }} variant="contained" size="small">Submit Ticket</Button>
-          </Box>
+    
+      <Box sx={{ flexGrow: 1 }}>
+        <MuiThemeProvider theme={theme}>
+        <AppBar position="static" color="primary">
+          <Toolbar>
+            <IconButton
+              edge="start"
+              color="inherit"
+              aria-label="menu"
+              onClick={() => setIsDrawerOpen(true)}
+            >
+              <MenuIcon />
+            </IconButton>
+            <Drawer anchor='left'
+              open={isDrawerOpen}
+              onClose={() => setIsDrawerOpen(false)}
+            >
+              <Box p={2} width='250px' textAlign='center' role='presentation'>
+                <Typography variant='h6' component='div'>
+                  Side Panel
+                </Typography>
+                <List>
+                  <ListItemButton sx={{ textAlign: 'center' }}>
+                    <ListItemText>
+                      <Link href="#" color="inherit" underline="none">Placeholder</Link>
+                    </ListItemText>
+                  </ListItemButton>
+                  <ListItemButton sx={{ textAlign: 'center' }}>
+                    <ListItemText>
+                      <Link href="#" color="inherit" underline="none">Placeholder</Link>
+                    </ListItemText>
+                  </ListItemButton>
+                  <ListItemButton sx={{ textAlign: 'center' }}>
+                    <ListItemText>
+                      <Link href="#" color="inherit" underline="none">Placeholder</Link>
+                    </ListItemText>
+                  </ListItemButton>
+                </List>
+              </Box>
+            </Drawer>
+            <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+              CompLogic
+            </Typography>
+            <Box display="flex" justifyContent="ceter"  sx={{ flexWrap: 'wrap', marginLeft: 'auto' }}>
+              <Button startIcon={<AlternateEmailIcon />} sx={{ ...style }} variant="contained" size="small">email@sample.com</Button>
+              <Button startIcon={<LocalPhoneIcon />} sx={{ ...style }} variant="contained" size="small">786-483-6751</Button>
+              <Button startIcon={<SupportIcon />} sx={{ ...style }} variant="contained" size="small">Submit Ticket</Button>
+            </Box>
 
-        </Toolbar>
-      </AppBar>
-    </Box>
+          </Toolbar>
+        </AppBar>
+        </MuiThemeProvider>
+      </Box>
+    
 
   )
 };
