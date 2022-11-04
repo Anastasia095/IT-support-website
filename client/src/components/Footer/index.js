@@ -14,60 +14,60 @@ const Footer = () => {
   return (
     <footer className="page-footer font-small cyan darken-3">
       <Box color="inherit" sx={{
-        textAlign: 'center',
         fontWeight: 'regular',
         fontFamily: 'default',
-        position: 'fixed',
+        position: 'relative',
         bottom: 0,
         width: '100%',
         color: 'white',
         background: '#212121'
       }}>
-        <Grid container spacing={2} columns={16}>
-          <Grid item xs={8}>
-            <Typography color="secondary">
+        <Grid
+          container
+          spacing={2}
+          direction="row"
+          justifyContent="space-evenly"
+          alignItems="flex-start">
+          <Grid item xs={1}>
+            <Typography color="secondary" component={'span'} variant={'body1'}>
               <Box sx={{ py: 2 }}>
-                Contact Us
+                CONTACT US
               </Box>
             </Typography>
             <Typography display='block' variant='caption'>
-              Link #1
+              941-882-1420 Office
             </Typography>
             <Typography display='block' variant='caption'>
-              Link #2
+              941-882-1430 Fax
             </Typography>
             <Typography display='block' variant='caption'>
-              Link #3
-            </Typography>
-            <Typography display='block' variant='caption'>
-              Link #4
+              email@placeholder.com
             </Typography>
           </Grid>
-          <Grid item xs={8}>
-            <Typography color="secondary">
+          <Grid item xs={1}>
+            <Typography color="secondary" component={'span'} variant={'body1'}>
               <Box sx={{ py: 2 }}>
-                Location
+                LOCATION
               </Box>
             </Typography>
-            <Typography display='block' variant='caption'>
-              Link #1
+            <Typography variant={'body2'}>
+              CompLogic, LLC.
             </Typography>
             <Typography display='block' variant='caption'>
-              Link #2
+              401 Johnson Lane Unit 103
+              Venice, FL 34285
             </Typography>
-            <Typography display='block' variant='caption'>
-              Link #3
-            </Typography>
-            <Typography display='block' variant='caption'>
-              Link #4
-            </Typography>
+            <div>
+              <iframe title="gMaps" width="200" height="150" style={{ border: 0 }} loading="lazy"
+                src="https://www.google.com/maps/embed/v1/search?q=CompLogic%20LLC%2C%20Johnson%20Lane%2C%20Venice%2C%20FL%2C%20USA&key=AIzaSyCnLU4vB4-iG_nuCysFum6w-2SqWq3IU-M"></iframe>
+            </div>
+
           </Grid>
         </Grid>
-        <Typography variant="caption" component="div" sx={{ flexGrow: 1 }}>
+        <Typography variant="caption" component="div" align="center" sx={{ flexGrow: 1 }}>
           &copy; {new Date().getFullYear()} - CompLogic, LLC. All Rights Reserved.
         </Typography>
       </Box>
-
     </footer>
   );
 };

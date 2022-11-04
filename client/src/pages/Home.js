@@ -7,7 +7,7 @@ const Home = () => {
   return (
     <React.Fragment>
       <AnimatedCarousel/>
-      <Box sx={{ display: 'flex', justifyContent: 'center' }}>
+      <Box sx={{ display: 'flex', justifyContent: 'center', pb: 6  }}>
         <ActionAreaCard sx={{ m: 1 }}/>
         <ActionAreaCard sx={{ m: 0.5 }}/>
         <ActionAreaCard sx={{ m: 0.5 }}/>
