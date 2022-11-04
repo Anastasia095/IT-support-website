@@ -13,7 +13,7 @@ const Footer = () => {
   const navigate = useNavigate();
   return (
     <footer className="page-footer font-small cyan darken-3">
-      <Box sx={{
+      <Box color="inherit"sx={{
         textAlign: 'center',
         fontWeight: 'regular',
         fontFamily: 'default',
@@ -21,11 +21,11 @@ const Footer = () => {
         bottom: 0,
         width: '100%',
         color: 'white',
-        background: 'black'
+        background: '#212121'
       }}>
         <Grid container spacing={2} columns={16}>
           <Grid item xs={8}>
-            <Typography>
+            <Typography color="secondary">
               Contact Us
             </Typography>
             <Typography display='block' variant='caption'>
@@ -42,7 +42,7 @@ const Footer = () => {
             </Typography>
           </Grid>
           <Grid item xs={8}>
-            <Typography>
+            <Typography color="secondary">
               Location
             </Typography>
             <Typography display='block' variant='caption'>

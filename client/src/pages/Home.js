@@ -5,14 +5,14 @@ import ActionAreaCard from '../components/Cards';
 
 const Home = () => {
   return (
-    <main>
+    <React.Fragment>
       <AnimatedCarousel />
-      <Box sx={{  display: 'flex', justifyContent: 'space-between' }}>
-        <ActionAreaCard />
-        <ActionAreaCard />
-        <ActionAreaCard />
+      <Box sx={{ display: 'flex', justifyContent: 'center' }}>
+        <ActionAreaCard sx={{ m: 1 }}/>
+        <ActionAreaCard sx={{ m: 0.5 }}/>
+        <ActionAreaCard sx={{ m: 0.5 }}/>
       </Box>
-    </main>
+    </React.Fragment>
   );
 };
 

@@ -18,40 +18,23 @@ import List from '@mui/material/List';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemText from "@mui/material/ListItemText";
 // import { ThemeProvider, createTheme } from '@mui/material/styles';
-import { MuiThemeProvider, createTheme } from '@material-ui/core/styles';
+import { MuiThemeProvider } from '@material-ui/core/styles';
+import { customTheme } from "../../themes/index.ts";
 
 const style = {
   m: 2,
-  color: 'white',
   borderRadius: 15,
 };
-
-const theme = createTheme({
-  palette: {
-    primary: {
-      //buttons are using main
-      main: '#343434',
-      light: '#36454F',
-      dark: 'white'
-    },
-    secondary: {
-      main: '#191970',
-      light: '#641970',
-      dark: '#1b081f'
-    }
-  },
-});
-
 
 function Navbar() {
 
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
 
   return (
-    
-      <Box sx={{ flexGrow: 1 }}>
-        <MuiThemeProvider theme={theme}>
-        <AppBar position="static" color="primary">
+
+    <Box sx={{ flexGrow: 1 }}>
+      <MuiThemeProvider theme={customTheme}>
+        <AppBar position="static">
           <Toolbar>
             <IconButton
               edge="start"
@@ -91,17 +74,35 @@ function Navbar() {
             <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
               CompLogic
             </Typography>
-            <Box display="flex" justifyContent="ceter"  sx={{ flexWrap: 'wrap', marginLeft: 'auto' }}>
-              <Button startIcon={<AlternateEmailIcon />} sx={{ ...style }} variant="contained" size="small">email@sample.com</Button>
-              <Button startIcon={<LocalPhoneIcon />} sx={{ ...style }} variant="contained" size="small">786-483-6751</Button>
-              <Button startIcon={<SupportIcon />} sx={{ ...style }} variant="contained" size="small">Submit Ticket</Button>
+            <Box display="flex" justifyContent="ceter" sx={{ flexWrap: 'wrap', marginLeft: 'auto' }}>
+              <Button startIcon={<AlternateEmailIcon />}
+                color="secondary"
+                sx={{ ...style }}
+                variant="contained"
+                size="small">
+                email@sample.com
+              </Button>
+              <Button startIcon={<LocalPhoneIcon />}
+                color="secondary"
+                sx={{ ...style }}
+                variant="contained"
+                size="small">
+                786-483-6751
+              </Button>
+              <Button startIcon={<SupportIcon />}
+                color="secondary"
+                sx={{ ...style }}
+                variant="contained"
+                size="small">
+                Submit Ticket
+              </Button>
             </Box>
 
           </Toolbar>
         </AppBar>
-        </MuiThemeProvider>
-      </Box>
-    
+      </MuiThemeProvider>
+    </Box>
+
 
   )
 };
