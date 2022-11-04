@@ -5,7 +5,8 @@ import { Box } from "@material-ui/core";
 function AnimatedCarousel() {
   return (
     <React.Fragment>
-    <Carousel>
+      <Box sx={{background: '#4D4D4D'}}>
+    <Carousel bg="#4D4D4D">
       <Carousel.Item interval={1000}>
         <img
           className="d-block m-auto"
@@ -45,6 +46,7 @@ function AnimatedCarousel() {
         </Carousel.Caption>
       </Carousel.Item>
     </Carousel>
+    </Box>
     </React.Fragment>
   );
 }

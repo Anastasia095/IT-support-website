@@ -6,7 +6,7 @@ import ActionAreaCard from '../components/Cards';
 const Home = () => {
   return (
     <React.Fragment>
-      <AnimatedCarousel />
+      <AnimatedCarousel/>
       <Box sx={{ display: 'flex', justifyContent: 'center' }}>
         <ActionAreaCard sx={{ m: 1 }}/>
         <ActionAreaCard sx={{ m: 0.5 }}/>
