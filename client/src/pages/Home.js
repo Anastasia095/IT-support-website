@@ -2,20 +2,20 @@ import React from 'react';
 import { Box } from "@material-ui/core";
 import Button from '@mui/material/Button';
 import AnimatedCarousel from '../components/Carousel';
-import ActionAreaCard from '../components/Cards';
-import { StayPrimaryLandscape } from '@material-ui/icons';
+import { Typography } from "@material-ui/core";
 
 const style = {
   width: 250,
   height: 250,
   margin: 45,
-  bgcolor: "rgba(77,77,77,0.62)"
-  // display: 'flex',
-  // justifyContent: 'center'
+  bgcolor: "rgba(77,77,77,0.85)",
+  display: 'flex',
+  justifyContent: 'center',
+  alignItems: 'center'
 };
 
 const bstyle = {
-  my: 12.8,
+  m: 2,
   borderRadius: 0,
 }
 
@@ -23,42 +23,67 @@ const Home = () => {
   return (
     <React.Fragment>
       <AnimatedCarousel />
-      <Box sx={{ display: 'flex', justifyContent: 'center', pb: 6 }}>
+      <Box sx={{
+        display: 'flex',
+        flexWrap: 'wrap',
+        justifyContent: 'center',
+        pb: 6
+      }}>
         <Box textAlign='center' sx={{ ...style }}>
-          <Button
-          sx={{ ...bstyle }}
-            color="secondary"
-            variant="contained"
-          >
-            Learn More
-          </Button>
+          <Box color="primary.contrastText" >
+            <Typography variant="h6">
+              Support Anywhere
+            </Typography>
+            <Button
+              sx={{ ...bstyle }}
+              color="secondary"
+              variant="contained"
+            >
+              Learn More
+            </Button>
+          </Box>
         </Box>
         <Box textAlign='center' sx={{ ...style }}>
-          <Button
-          sx={{ ...bstyle }}
-            color="secondary"
-            variant="contained"
-          >
-            Learn More
-          </Button>
+          <Box color="primary.contrastText" >
+            <Typography variant="h6">
+              Business Solutions
+            </Typography>
+            <Button
+              sx={{ ...bstyle }}
+              color="secondary"
+              variant="contained"
+            >
+              Learn More
+            </Button>
+          </Box>
         </Box>
         <Box textAlign='center' sx={{ ...style }}>
-          <Button
-          sx={{ ...bstyle }}
-            color="secondary"
-            variant="contained"
-          >
-            Learn More
-          </Button>
+          <Box color="primary.contrastText" >
+            <Typography variant="h6">
+              Web Development
+            </Typography>
+            <Button
+              sx={{ ...bstyle }}
+              color="secondary"
+              variant="contained"
+            >
+              Learn More
+            </Button>
+          </Box>
         </Box>
         <Box textAlign='center' sx={{ ...style }}>
-          <Button
-          sx={{ ...bstyle }}
-            color="secondary"
-            variant="contained"
-          >
-            Learn More
-          </Button>
+          <Box color="primary.contrastText" >
+            <Typography variant="h6">
+              New Equip/Repairs
+            </Typography>
+            <Button
+              sx={{ ...bstyle }}
+              color="secondary"
+              variant="contained"
+            >
+              Learn More
+            </Button>
+          </Box>
         </Box>
 
       </Box>

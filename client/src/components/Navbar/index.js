@@ -75,11 +75,12 @@ function Navbar() {
               CompLogic
             </Typography>
             <Box display="flex" justifyContent="ceter" sx={{ flexWrap: 'wrap', marginLeft: 'auto' }}>
-              <Button startIcon={<AlternateEmailIcon />}
+              <Button className="custom-btn" startIcon={<AlternateEmailIcon />}
                 color="secondary"
                 sx={{ ...style }}
                 variant="contained"
-                size="small">
+                size="small"
+                href={`mailto:email@sample.com`}>
                 email@sample.com
               </Button>
               <Button startIcon={<LocalPhoneIcon />}
