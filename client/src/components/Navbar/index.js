@@ -79,9 +79,8 @@ function Navbar() {
                 color="secondary"
                 sx={{ ...style }}
                 variant="contained"
-                size="small"
-                href={`mailto:email@sample.com`}>
-                email@sample.com
+                size="small">
+                  <a class='bsoverride' href="mailto:email@sample.com">email@sample.com</a>  
               </Button>
               <Button startIcon={<LocalPhoneIcon />}
                 color="secondary"
