@@ -16,7 +16,7 @@ const Footer = () => {
       <Box color="inherit" sx={{
         fontWeight: 'regular',
         fontFamily: 'default',
-        position: 'relative',
+        position: 'sticky',
         bottom: 0,
         width: '100%',
         color: 'white',

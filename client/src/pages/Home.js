@@ -1,7 +1,6 @@
 import React from 'react';
 import { Box } from "@material-ui/core";
 import Button from '@mui/material/Button';
-import AnimatedCarousel from '../components/Carousel';
 import { Typography } from "@material-ui/core";
 
 const style = {
@@ -22,7 +21,15 @@ const bstyle = {
 const Home = () => {
   return (
     <React.Fragment>
-      <AnimatedCarousel />
+      <Box sx={{
+        display: 'flex',
+        width: '100%',
+        height: 500,
+        background: '#0B0B0B',
+        justifyContent: 'center'
+      }}>
+<img src="https://www.complogic.com/images/c2.png"></img>
+      </Box>
       <Box sx={{
         display: 'flex',
         flexWrap: 'wrap',

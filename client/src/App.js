@@ -3,8 +3,8 @@ import { ApolloClient, InMemoryCache, ApolloProvider } from '@apollo/client';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { ThemeProvider } from '@mui/material/styles';
 import { customTheme } from "./themes/index.ts";
-import AnimatedCarousel from './components/Carousel';
 import Home from './pages/Home';
+import About from './pages/about';
 import Navbar from "./components/Navbar";
 import Footer from './components/Footer';
 import CssBaseline from "@material-ui/core/CssBaseline";
@@ -26,6 +26,10 @@ function App() {
                 path="/"
                 element={<Home />}
               />
+              {/* <Route
+                path="/about"
+                element={<About />}
+              /> */}
             </Routes>
             <Footer />
           </div>
