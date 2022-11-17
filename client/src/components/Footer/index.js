@@ -58,7 +58,7 @@ const Footer = () => {
               Venice, FL 34285
             </Typography>
             <div>
-              <iframe title="gMaps" width="200" height="150" style={{ border: 0 }} loading="lazy"
+              <iframe title="gMaps" width="100%" height="100%" style={{ border: 0 }} loading="lazy"
                 src="https://www.google.com/maps/embed/v1/search?q=CompLogic%20LLC%2C%20Johnson%20Lane%2C%20Venice%2C%20FL%2C%20USA&key=AIzaSyCnLU4vB4-iG_nuCysFum6w-2SqWq3IU-M"></iframe>
             </div>
 

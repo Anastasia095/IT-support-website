@@ -3,6 +3,7 @@ import { Box } from "@material-ui/core";
 import Button from '@mui/material/Button';
 import { Typography } from "@material-ui/core";
 
+import Footer from '../components/Footer';
 const style = {
   width: 250,
   height: 250,
@@ -26,9 +27,9 @@ const Home = () => {
         width: '100%',
         height: 500,
         background: '#0B0B0B',
-        justifyContent: 'center'
+        justifyContent: 'center',
       }}>
-<img src="https://www.complogic.com/images/c2.png"></img>
+        <img src="https://www.complogic.com/images/c2.png"></img>
       </Box>
       <Box sx={{
         display: 'flex',
@@ -94,6 +95,7 @@ const Home = () => {
         </Box>
 
       </Box>
+      
     </React.Fragment>
   );
 };

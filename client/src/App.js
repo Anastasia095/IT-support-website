@@ -19,7 +19,6 @@ function App() {
       <ThemeProvider theme={customTheme}>
         <CssBaseline />
         <Router>
-          <div className="flex-column justify-flex-start min-100-vh">
             <Navbar />
             <Routes>
               <Route
@@ -32,7 +31,6 @@ function App() {
               /> */}
             </Routes>
             <Footer />
-          </div>
         </Router>
       </ThemeProvider >
     </ApolloProvider>
