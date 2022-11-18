@@ -12,11 +12,11 @@ const Footer = () => {
   // We get React Router's history object so we can access and adjust browser history
   const navigate = useNavigate();
   return (
-    <footer className="page-footer font-small cyan darken-3">
+    <Box component="footer" sx={{
+      display: 'flex'}} >
       <Box color="inherit" sx={{
         fontWeight: 'regular',
         fontFamily: 'default',
-        position: 'sticky',
         bottom: 0,
         width: '100%',
         color: 'white',
@@ -68,7 +68,7 @@ const Footer = () => {
           &copy; {new Date().getFullYear()} - CompLogic, LLC. All Rights Reserved.
         </Typography>
       </Box>
-    </footer>
+    </Box>
   );
 };
 

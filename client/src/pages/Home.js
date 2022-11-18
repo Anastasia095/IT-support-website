@@ -3,7 +3,6 @@ import { Box } from "@material-ui/core";
 import Button from '@mui/material/Button';
 import { Typography } from "@material-ui/core";
 
-import Footer from '../components/Footer';
 const style = {
   width: 250,
   height: 250,
@@ -35,7 +34,7 @@ const Home = () => {
         display: 'flex',
         flexWrap: 'wrap',
         justifyContent: 'center',
-        pb: 6
+        minHeight: '34vh'
       }}>
         <Box textAlign='center' sx={{ ...style }}>
           <Box color="primary.contrastText" >

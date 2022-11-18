@@ -6,10 +6,10 @@ body {
     color: white;
 }
 
-#root {
-    height: 100vh;
-}
-
 img {
     max-width: 100%;
+}
+
+.wrapper {
+    height: calc(100vh - 354px);
 }
