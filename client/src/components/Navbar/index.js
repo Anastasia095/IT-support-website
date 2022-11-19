@@ -49,6 +49,32 @@ const modalStyle2 = {
 
 function Navbar() {
 
+  function submitTicket() {
+    // alert(textValue);
+    // console.log(textValue);
+    const title = textValue;
+    const body = document.querySelector('.body').value.trim();
+
+    if (title && body) {
+      const response = fetch(`http://localhost:3001/api/send`, {
+        method: 'POST',
+        body: JSON.stringify({ title, body }),
+        headers: {
+          'Content-Type': 'application/json',
+          //line above is part of fetch()
+        },
+      });
+
+      if (response.ok) {
+        alert('Success');
+      } else {
+        alert('Failed to post');
+      }
+    }
+  };
+
+
+
   // const large = useMediaQuery(customTheme.breakpoints.up("lg"));
   // const medium = useMediaQuery(customTheme.breakpoints.up("md"));
   const small = useMediaQuery(customTheme.breakpoints.up("sm"));
@@ -166,6 +192,7 @@ function Navbar() {
                   <Box sx={{ py: 3 }}>
                     <Box sx={{ py: 1 }}>
                       <TextField
+                        className='title'
                         required
                         id="outlined-required"
                         label="Required"
@@ -181,17 +208,9 @@ function Navbar() {
                         value={textValue}
                         onChange={handleTextChange}
                       />
-                      <Box sx={{ py: 2 }}>
-                        <TextField
-                          required
-                          id="outlined-required"
-                          label="Required"
-                          defaultValue="enter your email"
-                        />
-                      </Box>
                     </Box>
                     <Box textAlign='center'>
-                      <Button sx={{ align: 'center' }} variant="contained">Submit</Button>
+                      <Button onClick={() => submitTicket()} sx={{ align: 'center' }} variant="contained">Submit</Button>
                     </Box>
                   </Box>
                 </Box>
