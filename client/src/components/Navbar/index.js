@@ -63,6 +63,13 @@ function Navbar() {
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
+
+  const [textValue, setTextValue] = React.useState('describe your issue');
+
+  const handleTextChange = (event) => {
+    setTextValue(event.target.value);
+  };
+
   return (
 
     <Box sx={{ flexGrow: 1 }}>
@@ -168,9 +175,11 @@ function Navbar() {
                     <Box sx={{ py: 2 }}>
                       <TextField
                         required
-                        id="outlined-required"
+                        id="outlined-multiline-flexible"
                         label="Required"
-                        defaultValue="describe your issue"
+                        multiline
+                        value={textValue}
+                        onChange={handleTextChange}
                       />
                       <Box sx={{ py: 2 }}>
                         <TextField
