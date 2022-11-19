@@ -7,7 +7,6 @@ function About() {
     <div class="wrapper">
     <Typography variant="h1">About</Typography>
     </div>
-    // test
   );
 };
 

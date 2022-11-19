@@ -7,6 +7,7 @@ import {
   Typography,
   IconButton
 } from "@material-ui/core";
+import Modal from '@mui/material/Modal';
 import Button from '@mui/material/Button';
 import { Menu as MenuIcon } from "@material-ui/icons";
 import AlternateEmailIcon from '@mui/icons-material/AlternateEmail';
@@ -28,12 +29,27 @@ const style = {
   borderRadius: 15,
 };
 
+const modalStyle = {
+  position: 'absolute',
+  top: '50%',
+  left: '50%',
+  transform: 'translate(-50%, -50%)',
+  width: 400,
+  bgcolor: 'background.paper',
+  border: '2px solid #000',
+  boxShadow: 24,
+  p: 4,
+};
 
 function Navbar() {
 
   // const large = useMediaQuery(customTheme.breakpoints.up("lg"));
   // const medium = useMediaQuery(customTheme.breakpoints.up("md"));
   const small = useMediaQuery(customTheme.breakpoints.up("sm"));
+
+  const [open, setOpen] = React.useState(false);
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
 
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   const [value, setValue] = React.useState(0);
@@ -98,7 +114,7 @@ function Navbar() {
                   href="mailto:email@sample.com">email@sample.com</Link>
               </Button>
               <IconButton href="mailto:email@sample.com" aria-label="email">
-                <AlternateEmailIcon sx={{ display: small ? 'none' : "block" }} color="info"/>
+                <AlternateEmailIcon sx={{ display: small ? 'none' : "block" }} color="info" />
               </IconButton>
               <Button startIcon={<LocalPhoneIcon />}
                 color="secondary"
@@ -108,18 +124,34 @@ function Navbar() {
                 <Box sx={{ display: small ? '' : "none" }}>786-483-6751</Box>
               </Button>
               <IconButton aria-label="phone">
-                <LocalPhoneIcon sx={{ display: small ? 'none' : "block" }} color="info"/>
+                <LocalPhoneIcon sx={{ display: small ? 'none' : "block" }} color="info" />
               </IconButton>
               <Button startIcon={<SupportIcon />}
+                onClick={handleOpen}
                 color="secondary"
                 sx={{ ...style, display: small ? '' : "none" }}
                 variant="contained"
                 size="small">
                 <Box sx={{ display: small ? '' : "none" }}>Submit Ticket</Box>
               </Button>
-              <IconButton aria-label="phone">
+              <IconButton aria-label="phone" onClick={handleOpen}>
                 <SupportIcon sx={{ display: small ? 'none' : "block" }} color="info" />
               </IconButton>
+              <Modal
+                open={open}
+                onClose={handleClose}
+                aria-labelledby="modal-modal-title"
+                aria-describedby="modal-modal-description"
+              >
+                <Box sx={modalStyle}>
+                  <Typography id="modal-modal-title" variant="h6" component="h2">
+                    Text in a modal
+                  </Typography>
+                  <Typography id="modal-modal-description" sx={{ mt: 2 }}>
+                    Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
+                  </Typography>
+                </Box>
+              </Modal>
             </Box>
 
           </Toolbar>
