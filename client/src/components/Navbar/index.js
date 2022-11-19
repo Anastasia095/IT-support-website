@@ -9,6 +9,7 @@ import {
 } from "@material-ui/core";
 import Modal from '@mui/material/Modal';
 import Button from '@mui/material/Button';
+import TextField from '@mui/material/TextField';
 import { Menu as MenuIcon } from "@material-ui/icons";
 import AlternateEmailIcon from '@mui/icons-material/AlternateEmail';
 import LocalPhoneIcon from '@mui/icons-material/LocalPhone';
@@ -39,7 +40,12 @@ const modalStyle = {
   border: '2px solid #000',
   boxShadow: 24,
   p: 4,
+  '& .MuiTextField-root': { m: 1, width: '25ch' }
 };
+
+const modalStyle2 = {
+  align: 'center'
+}
 
 function Navbar() {
 
@@ -143,13 +149,42 @@ function Navbar() {
                 aria-labelledby="modal-modal-title"
                 aria-describedby="modal-modal-description"
               >
-                <Box sx={modalStyle}>
-                  <Typography id="modal-modal-title" variant="h6" component="h2">
-                    Text in a modal
+                <Box sx={modalStyle}
+                  component="form"
+                  noValidate
+                  autoComplete="off">
+                  <Typography align="center" id="modal-modal-title" variant="h6" component="h2">
+                    Open Ticket
                   </Typography>
-                  <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-                    Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
-                  </Typography>
+                  <Box sx={{ py: 3 }}>
+                    <Box sx={{ py: 1 }}>
+                      <TextField
+                        required
+                        id="outlined-required"
+                        label="Required"
+                        defaultValue="ticket title"
+                      />
+                    </Box>
+                    <Box sx={{ py: 2 }}>
+                      <TextField
+                        required
+                        id="outlined-required"
+                        label="Required"
+                        defaultValue="describe your issue"
+                      />
+                      <Box sx={{ py: 2 }}>
+                        <TextField
+                          required
+                          id="outlined-required"
+                          label="Required"
+                          defaultValue="enter your email"
+                        />
+                      </Box>
+                    </Box>
+                    <Box textAlign='center'>
+                      <Button sx={{ align: 'center' }} variant="contained">Submit</Button>
+                    </Box>
+                  </Box>
                 </Box>
               </Modal>
             </Box>
