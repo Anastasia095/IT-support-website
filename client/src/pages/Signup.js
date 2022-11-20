@@ -16,13 +16,35 @@ import { customTheme } from "../themes/index.ts";
 
 
 export default function SignUp() {
+
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
-    console.log({
-      email: data.get('email'),
-      password: data.get('password'),
+
+    const user_name = data.get('username');
+    const email = data.get('email');
+    const password = data.get('password');
+    const first_name = data.get('firstName');
+    const last_name = data.get('lastName');
+    
+    
+    
+
+    const response = fetch(`http://localhost:3001/api/user`, {
+      method: 'POST',
+      body: JSON.stringify({ first_name, last_name, user_name, email, password }),
+      headers: {
+        'Content-Type': 'application/json',
+        //line above is part of fetch()
+      },
     });
+
+    if (response.ok) {
+      alert('Success');
+    } else {
+      console.log(response);
+    };
+
   };
 
   return (

@@ -13,9 +13,17 @@ class User extends Model {
     {
       id: {
         type: DataTypes.INTEGER,
-        allowNull: false,
+        // allowNull: false,
         primaryKey: true,
         autoIncrement: true,
+      },
+      first_name: {
+        type: DataTypes.STRING,
+        allowNull: false,
+      },
+      last_name: {
+        type: DataTypes.STRING,
+        allowNull: false,
       },
       user_name: {
         type: DataTypes.STRING,
@@ -33,7 +41,7 @@ class User extends Model {
         type: DataTypes.STRING,
         allowNull: false,
         validate: {
-          len: [2, 10]
+          len: [2, 35]
         },
       },
     },

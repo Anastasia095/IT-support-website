@@ -51,8 +51,6 @@ function Navbar() {
 
     // alert('Title is ' + title + ' body is '+ body);
     if (title && ticketBody !== undefined) {
-      console.log("if test");
-      alert("if test");
       const response = fetch(`http://localhost:3001/api/send`, {
         method: 'POST',
         body: JSON.stringify({ title, ticketBody }),
@@ -66,8 +64,8 @@ function Navbar() {
         alert('Success');
       } else {
         alert(response);
-      }
-    }
+      };
+    };
   };
 
   // const large = useMediaQuery(customTheme.breakpoints.up("lg"));
@@ -111,7 +109,7 @@ function Navbar() {
             >
               <Box p={2} width='250px' textAlign='center' role='presentation'>
                 <Typography variant='h6' component='div'>
-                  Side Panel
+                  Menu
                 </Typography>
                 <List>
                   <ListItemButton sx={{ textAlign: 'center' }}>
