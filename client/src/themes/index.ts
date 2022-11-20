@@ -1,6 +1,7 @@
 import { createTheme } from '@material-ui/core/styles';
 
 export const customTheme = createTheme({
+
   palette: {
     type: 'light',
     primary: {
@@ -13,7 +14,7 @@ export const customTheme = createTheme({
       main: '#ffffff',
     },
   },
-  
+
   breakpoints: {
     values: {
       xs: 0,

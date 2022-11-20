@@ -11,22 +11,13 @@ import Box from '@mui/material/Box';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
-import { createTheme, ThemeProvider } from '@mui/material/styles';
+// import { createTheme, ThemeProvider } from '@mui/material/styles';
 
-function Copyright(props) {
-  return (
-    <Typography variant="body2" color="text.secondary" align="center" {...props}>
-      {'Copyright © '}
-      <Link color="inherit" href="https://mui.com/">
-        Your Website
-      </Link>{' '}
-      {new Date().getFullYear()}
-      {'.'}
-    </Typography>
-  );
-}
+import { MuiThemeProvider } from '@material-ui/core/styles';
+import { customTheme } from "../themes/index.ts";
 
-const theme = createTheme();
+// const theme = createTheme();
+const inputStyle = { WebkitBoxShadow: "0 0 0 100px #f44336 inset" };
 
 export default function SignIn() {
   const handleSubmit = (event) => {
@@ -39,7 +30,7 @@ export default function SignIn() {
   };
 
   return (
-    <ThemeProvider theme={theme}>
+<MuiThemeProvider theme={customTheme}>
       <Container component="main" maxWidth="xs">
         <CssBaseline />
         <Box
@@ -66,6 +57,7 @@ export default function SignIn() {
               name="email"
               autoComplete="email"
               autoFocus
+              inputProps={{ style: inputStyle }}
             />
             <TextField
               margin="normal"
@@ -76,6 +68,7 @@ export default function SignIn() {
               type="password"
               id="password"
               autoComplete="current-password"
+              inputProps={{ style: inputStyle }}
             />
             <FormControlLabel
               control={<Checkbox value="remember" color="primary" />}
@@ -103,8 +96,7 @@ export default function SignIn() {
             </Grid>
           </Box>
         </Box>
-        <Copyright sx={{ mt: 8, mb: 4 }} />
       </Container>
-    </ThemeProvider>
+    </MuiThemeProvider>
   );
 }
