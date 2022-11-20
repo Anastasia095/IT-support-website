@@ -1,3 +1,13 @@
-const Profile = require('./Profile');
+const User = require('./User');
+const Ticket = require('./Ticket');
 
-module.exports = { Profile };
+Ticket.belongsTo(User, {
+    foreignKey: 'user_id',
+    onDelete: 'CASCADE'
+});
+
+
+module.exports = {
+    User,
+    Ticket
+};
