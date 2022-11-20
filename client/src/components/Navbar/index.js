@@ -43,22 +43,20 @@ const modalStyle = {
   '& .MuiTextField-root': { m: 1, width: '25ch' }
 };
 
-const modalStyle2 = {
-  align: 'center'
-}
-
 function Navbar() {
 
   function submitTicket() {
-    // alert(textValue);
-    // console.log(textValue);
-    const title = textValue;
-    const body = document.querySelector('.body').value.trim();
 
-    if (title && body) {
+    const title = value;
+    const ticketBody = textValue;
+
+    // alert('Title is ' + title + ' body is '+ body);
+    if (title && ticketBody !== undefined) {
+      console.log("if test");
+      alert("if test");
       const response = fetch(`http://localhost:3001/api/send`, {
         method: 'POST',
-        body: JSON.stringify({ title, body }),
+        body: JSON.stringify({ title, ticketBody }),
         headers: {
           'Content-Type': 'application/json',
           //line above is part of fetch()
@@ -68,7 +66,7 @@ function Navbar() {
       if (response.ok) {
         alert('Success');
       } else {
-        alert('Failed to post');
+        alert(response);
       }
     }
   };
@@ -79,19 +77,19 @@ function Navbar() {
   // const medium = useMediaQuery(customTheme.breakpoints.up("md"));
   const small = useMediaQuery(customTheme.breakpoints.up("sm"));
 
+  //drawer state
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
-
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
-  const [value, setValue] = React.useState(0);
 
-  const handleChange = (event, newValue) => {
-    setValue(newValue);
+  //modal state
+  const [value, setValue] = React.useState('ticket title');
+  const handleChange = (event) => {
+    setValue(event.target.value);
   };
 
   const [textValue, setTextValue] = React.useState('describe your issue');
-
   const handleTextChange = (event) => {
     setTextValue(event.target.value);
   };
@@ -196,7 +194,8 @@ function Navbar() {
                         required
                         id="outlined-required"
                         label="Required"
-                        defaultValue="ticket title"
+                        value={value}
+                        onChange={handleChange}
                       />
                     </Box>
                     <Box sx={{ py: 2 }}>
