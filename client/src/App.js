@@ -6,6 +6,7 @@ import CssBaseline from "@material-ui/core/CssBaseline";
 import { customTheme } from "./themes/index.ts";
 import Home from './pages/Home';
 import About from './pages/about';
+import SignIn from './pages/Login';
 import Navbar from "./components/Navbar";
 import Footer from './components/Footer';
 
@@ -27,6 +28,7 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/about" element={<About />} />
+            <Route path="/login" element={<SignIn />} />
           </Routes>
           <Footer />
         </Router>

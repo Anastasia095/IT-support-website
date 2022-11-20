@@ -1,16 +1,11 @@
 import React from 'react';
-// Import hooks from React Router
-import { useLocation, useNavigate } from 'react-router-dom';
 import { Box } from "@material-ui/core";
 import { Typography } from "@material-ui/core";
 import Grid from '@mui/material/Grid';
 
 
 const Footer = () => {
-  // We retrieve the current `location` object data from React Router
-  const location = useLocation();
-  // We get React Router's history object so we can access and adjust browser history
-  const navigate = useNavigate();
+
   return (
     <Box component="footer" sx={{
       display: 'flex'}} >
@@ -18,6 +13,7 @@ const Footer = () => {
         fontWeight: 'regular',
         fontFamily: 'default',
         bottom: 0,
+        position: 'fixed',
         width: '100%',
         color: 'white',
         background: '#212121'

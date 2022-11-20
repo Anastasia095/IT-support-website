@@ -19,7 +19,6 @@ import Link from '@mui/material/Link';
 import List from '@mui/material/List';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemText from "@mui/material/ListItemText";
-// import { ThemeProvider, createTheme } from '@mui/material/styles';
 import { MuiThemeProvider } from '@material-ui/core/styles';
 import { customTheme } from "../../themes/index.ts";
 import useMediaQuery from "@mui/material/useMediaQuery";
@@ -70,8 +69,6 @@ function Navbar() {
       }
     }
   };
-
-
 
   // const large = useMediaQuery(customTheme.breakpoints.up("lg"));
   // const medium = useMediaQuery(customTheme.breakpoints.up("md"));
@@ -215,7 +212,6 @@ function Navbar() {
                 </Box>
               </Modal>
             </Box>
-
           </Toolbar>
         </AppBar>
       </MuiThemeProvider>
