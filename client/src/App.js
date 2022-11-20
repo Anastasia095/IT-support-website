@@ -7,6 +7,7 @@ import { customTheme } from "./themes/index.ts";
 import Home from './pages/Home';
 import About from './pages/about';
 import SignIn from './pages/Login';
+import Signup from './pages/Signup';
 import Navbar from "./components/Navbar";
 import Footer from './components/Footer';
 
@@ -29,6 +30,7 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/about" element={<About />} />
             <Route path="/login" element={<SignIn />} />
+            <Route path="/signup" element={<Signup />} />
           </Routes>
           <Footer />
         </Router>

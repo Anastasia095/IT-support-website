@@ -11,12 +11,9 @@ import Box from '@mui/material/Box';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
-// import { createTheme, ThemeProvider } from '@mui/material/styles';
-
 import { MuiThemeProvider } from '@material-ui/core/styles';
 import { customTheme } from "../themes/index.ts";
 
-// const theme = createTheme();
 const inputStyle = { WebkitBoxShadow: "0 0 0 100px #f44336 inset" };
 
 export default function SignIn() {
@@ -89,7 +86,7 @@ export default function SignIn() {
                 </Link>
               </Grid>
               <Grid item>
-                <Link href="#" variant="body2">
+                <Link href="signup" variant="body2">
                   {"Don't have an account? Sign Up"}
                 </Link>
               </Grid>
