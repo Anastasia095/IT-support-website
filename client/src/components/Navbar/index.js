@@ -121,7 +121,7 @@ function Navbar() {
                   </ListItemButton>
                   <ListItemButton sx={{ textAlign: 'center' }}>
                     <ListItemText>
-                      <Link href="#" color="inherit" underline="none">Placeholder</Link>
+                      <Link href="login" color="inherit" underline="none">Login/SignUp</Link>
                     </ListItemText>
                   </ListItemButton>
                   <ListItemButton sx={{ textAlign: 'center' }}>
