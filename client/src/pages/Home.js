@@ -28,7 +28,7 @@ const Home = () => {
         background: '#0B0B0B',
         justifyContent: 'center',
       }}>
-        <img src="https://www.complogic.com/images/c2.png"></img>
+        <img alt="logo" src="https://www.complogic.com/images/c2.png"></img>
       </Box>
       <Box sx={{
         display: 'flex',

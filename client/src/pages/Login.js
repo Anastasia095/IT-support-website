@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { Navigate } from 'react-router-dom';
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
@@ -14,20 +15,15 @@ import Container from '@mui/material/Container';
 import { MuiThemeProvider } from '@material-ui/core/styles';
 import { customTheme } from "../themes/index.ts";
 
-const inputStyle = { WebkitBoxShadow: "0 0 0 100px #f44336 inset" };
-// const inputStyle = {
-//   WebkitBoxShadow: "0 0 0 100px #f44336 inset"
-// };
-
 export default function SignIn() {
-  const handleSubmit = (event) => {
+  async function handleSubmit(event) {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
 
     const email = data.get('email');
     const password = data.get('password');
 
-    const response = fetch(`http://localhost:3001/api/user/login`, {
+    const response = await fetch(`http://localhost:3001/api/user/login`, {
       method: 'POST',
       body: JSON.stringify({ email, password }),
       headers: {
@@ -36,9 +32,9 @@ export default function SignIn() {
     });
 
     if (response.ok) {
-      alert('Success');
+      <Navigate to='/' />
     } else {
-      console.log('Not Ok');
+      console.log(response);
     };
   };
 
@@ -64,8 +60,7 @@ export default function SignIn() {
           <Box component="form" onSubmit={handleSubmit} noValidate sx={{
             mt: 1,
             '& .MuiOutlinedInput-input:-webkit-autofill': {
-              '-webkit-text-fill-color': 'white',
-              '-webkit-box-shadow': '0 0 0px 1000px #f44336 inset',
+              WebkitBoxShadow: '0 0 0px 1000px #f44336 inset',
             }
           }}>
             <TextField
@@ -77,13 +72,6 @@ export default function SignIn() {
               name="email"
               autoComplete="email"
               autoFocus
-            // inputProps={{ style: inputStyle }}
-            // sx={{
-            //   '& :-webkit-autofill': {
-            //     '-webkit-text-fill-color': 'white',
-            //     '-webkit-box-shadow': '0 0 0px 1000px #f44336 inset',
-            //   }
-            // }}
             />
             <TextField
               margin="normal"
