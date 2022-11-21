@@ -27,8 +27,6 @@ export default function SignUp() {
     const first_name = data.get('firstName');
     const last_name = data.get('lastName');
     
-    
-    
 
     const response = fetch(`http://localhost:3001/api/user`, {
       method: 'POST',

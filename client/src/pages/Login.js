@@ -15,19 +15,35 @@ import { MuiThemeProvider } from '@material-ui/core/styles';
 import { customTheme } from "../themes/index.ts";
 
 const inputStyle = { WebkitBoxShadow: "0 0 0 100px #f44336 inset" };
+// const inputStyle = {
+//   WebkitBoxShadow: "0 0 0 100px #f44336 inset"
+// };
 
 export default function SignIn() {
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
-    console.log({
-      email: data.get('email'),
-      password: data.get('password'),
+
+    const email = data.get('email');
+    const password = data.get('password');
+
+    const response = fetch(`http://localhost:3001/api/user/login`, {
+      method: 'POST',
+      body: JSON.stringify({ email, password }),
+      headers: {
+        'Content-Type': 'application/json',
+      },
     });
+
+    if (response.ok) {
+      alert('Success');
+    } else {
+      console.log('Not Ok');
+    };
   };
 
   return (
-<MuiThemeProvider theme={customTheme}>
+    <MuiThemeProvider theme={customTheme}>
       <Container component="main" maxWidth="xs">
         <CssBaseline />
         <Box
@@ -45,7 +61,13 @@ export default function SignIn() {
           <Typography component="h1" variant="h5">
             Sign in
           </Typography>
-          <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
+          <Box component="form" onSubmit={handleSubmit} noValidate sx={{
+            mt: 1,
+            '& .MuiOutlinedInput-input:-webkit-autofill': {
+              '-webkit-text-fill-color': 'white',
+              '-webkit-box-shadow': '0 0 0px 1000px #f44336 inset',
+            }
+          }}>
             <TextField
               margin="normal"
               required
@@ -55,7 +77,13 @@ export default function SignIn() {
               name="email"
               autoComplete="email"
               autoFocus
-              inputProps={{ style: inputStyle }}
+            // inputProps={{ style: inputStyle }}
+            // sx={{
+            //   '& :-webkit-autofill': {
+            //     '-webkit-text-fill-color': 'white',
+            //     '-webkit-box-shadow': '0 0 0px 1000px #f44336 inset',
+            //   }
+            // }}
             />
             <TextField
               margin="normal"
@@ -66,7 +94,6 @@ export default function SignIn() {
               type="password"
               id="password"
               autoComplete="current-password"
-              inputProps={{ style: inputStyle }}
             />
             <FormControlLabel
               control={<Checkbox value="remember" color="primary" />}
