@@ -47,13 +47,13 @@ function Navbar() {
   function submitTicket() {
 
     const title = value;
-    const ticketBody = textValue;
+    const ticket_body = textValue;
 
     // alert('Title is ' + title + ' body is '+ body);
-    if (title && ticketBody !== undefined) {
+    if (title && ticket_body !== undefined) {
       const response = fetch(`http://localhost:3001/api/send`, {
         method: 'POST',
-        body: JSON.stringify({ title, ticketBody }),
+        body: JSON.stringify({ title, ticket_body }),
         headers: {
           'Content-Type': 'application/json',
           //line above is part of fetch()

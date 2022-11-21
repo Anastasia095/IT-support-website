@@ -16,7 +16,7 @@ Ticket.init(
       type: DataTypes.STRING,
       allowNull: false,
     },
-    ticketBody: {
+    ticket_body: {
       type: DataTypes.TEXT,
       allowNull: false,
     },
