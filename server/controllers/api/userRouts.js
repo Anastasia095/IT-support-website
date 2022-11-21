@@ -2,7 +2,14 @@ const router = require('express').Router();
 var cors = require('cors');
 const { User } = require('../../models');
 
-router.use(cors());
+
+
+var corsOptions = {
+    origin: 'http://127.0.0.1:3000',
+    credentials: true
+};
+
+router.use(cors(corsOptions));
 
 router.post('/', async (req, res) => {
     console.log(req.body);
