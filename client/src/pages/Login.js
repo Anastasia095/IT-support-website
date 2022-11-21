@@ -36,6 +36,7 @@ export default function SignIn() {
             display: 'flex',
             flexDirection: 'column',
             alignItems: 'center',
+            height: '67.5vh'
           }}
         >
           <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
