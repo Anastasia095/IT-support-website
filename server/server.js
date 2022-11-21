@@ -1,6 +1,7 @@
 const express = require('express');
 const session = require('express-session');
 const path = require('path');
+var cors = require('cors');
 const sequelize = require('./config/connection');
 const SequelizeStore = require('connect-session-sequelize')(session.Store);
 // const db = require('./config/connection');
@@ -12,7 +13,8 @@ const app = express();
 const sess = {
   secret: 'Super secret secret',
   cookie: {
-    maxAge: 86400,
+    httpOnly: true,
+    maxAge: 3600000,
   },
   resave: false,
   saveUninitialized: true,
@@ -22,10 +24,17 @@ const sess = {
 };
 
 app.use(session(sess));
-
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 app.use(routes);
+
+app.use(
+  cors({
+    origin: "http://localhost:3000",
+    methods: ["POST", "PUT", "GET", "OPTIONS", "HEAD"],
+    credentials: true,
+  })
+);
 
 if (process.env.NODE_ENV === 'production') {
   app.use(express.static(path.join(__dirname, '../client/build')));

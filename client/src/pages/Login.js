@@ -24,6 +24,7 @@ export default function SignIn() {
     const password = data.get('password');
 
     const response = await fetch(`http://localhost:3001/api/user/login`, {
+      withCredentials: true,
       method: 'POST',
       body: JSON.stringify({ email, password }),
       headers: {

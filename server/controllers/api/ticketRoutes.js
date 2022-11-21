@@ -8,7 +8,7 @@ router.use(cors());
 
 router.post('/', async (req, res) => {
     try {
-        console.log(req.session.userId);
+        console.log(req.session);
         const newTicket = await Ticket.create({
             ...req.body,
             status: "new",
