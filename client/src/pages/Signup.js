@@ -13,7 +13,7 @@ import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { MuiThemeProvider } from '@material-ui/core/styles';
 import { customTheme } from "../themes/index.ts";
-
+import Navbar from "../components/Navbar";
 
 export default function SignUp() {
 
@@ -47,6 +47,7 @@ export default function SignUp() {
 
   return (
     <MuiThemeProvider theme={customTheme}>
+      <Navbar />
       <Container component="main" maxWidth="xs">
         <CssBaseline />
         <Box

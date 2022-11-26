@@ -4,7 +4,12 @@ var cors = require('cors');
 
 // const { Plants, Collection } = require('../../models');
 
-router.use(cors());
+var corsOptions = {
+    origin: 'http://127.0.0.1:3000',
+    credentials: true
+};
+
+router.use(cors(corsOptions));
 
 router.post('/', async (req, res) => {
     try {

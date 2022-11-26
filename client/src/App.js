@@ -8,8 +8,8 @@ import Home from './pages/Home';
 import About from './pages/about';
 import SignIn from './pages/Login';
 import Signup from './pages/Signup';
-import Navbar from "./components/Navbar";
 import Footer from './components/Footer';
+import Profile from './pages/Profile'
 
 
 
@@ -25,12 +25,12 @@ function App() {
       <ThemeProvider theme={customTheme}>
         <CssBaseline />
         <Router>
-          <Navbar />
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/about" element={<About />} />
             <Route path="/login" element={<SignIn />} />
             <Route path="/signup" element={<Signup />} />
+            <Route path="/profile" element={<Profile />} />
           </Routes>
           <Footer />
         </Router>

@@ -2,6 +2,7 @@ import React from 'react';
 import { Box } from "@material-ui/core";
 import Button from '@mui/material/Button';
 import { Typography } from "@material-ui/core";
+import Navbar from "../components/Navbar";
 
 const style = {
   width: 250,
@@ -21,6 +22,7 @@ const bstyle = {
 const Home = () => {
   return (
     <React.Fragment>
+      <Navbar />
       <Box sx={{
         display: 'flex',
         width: '100%',

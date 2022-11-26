@@ -51,7 +51,7 @@ function Navbar() {
 
     // alert('Title is ' + title + ' body is '+ body);
     if (title && ticket_body !== undefined) {
-      const response = fetch(`http://localhost:3001/api/send`, {
+      const response = fetch(`http://127.0.0.1:3001/api/send`, {
         credentials: 'include',
         method: 'POST',
         body: JSON.stringify({ title, ticket_body }),

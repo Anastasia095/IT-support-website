@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Navigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
@@ -14,8 +14,13 @@ import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { MuiThemeProvider } from '@material-ui/core/styles';
 import { customTheme } from "../themes/index.ts";
+import Navbar from "../components/Navbar";
+
+
 
 export default function SignIn() {
+  const navigate = useNavigate();
+
   async function handleSubmit(event) {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
@@ -33,7 +38,7 @@ export default function SignIn() {
     });
 
     if (response.ok) {
-      <Navigate to='/' />
+      navigate("/");
     } else {
       console.log(response);
     };
@@ -41,6 +46,7 @@ export default function SignIn() {
 
   return (
     <MuiThemeProvider theme={customTheme}>
+      <Navbar />
       <Container component="main" maxWidth="xs">
         <CssBaseline />
         <Box
@@ -58,7 +64,8 @@ export default function SignIn() {
           <Typography component="h1" variant="h5">
             Sign in
           </Typography>
-          <Box component="form" onSubmit={handleSubmit} noValidate sx={{
+          <Box component="form" onSubmit={handleSubmit} noValidate 
+          sx={{
             mt: 1,
             '& .MuiOutlinedInput-input:-webkit-autofill': {
               WebkitBoxShadow: '0 0 0px 1000px #f44336 inset',
