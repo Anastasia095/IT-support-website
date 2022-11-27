@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {
-  AppBar,
   Drawer,
+  AppBar,
   Box,
   Toolbar,
   Typography,

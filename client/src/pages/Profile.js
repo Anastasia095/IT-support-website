@@ -1,7 +1,10 @@
 import * as React from 'react';
-import AppBar from '@mui/material/AppBar';
-import Box from '@mui/material/Box';
-import Toolbar from '@mui/material/Toolbar';
+import {
+    AppBar,
+    Drawer,
+    Box,
+    Toolbar,
+} from "@material-ui/core";
 import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
 import Badge from '@mui/material/Badge';
@@ -17,6 +20,13 @@ import Checkbox from '@mui/material/Checkbox';
 import SearchIcon from '@mui/icons-material/Search';
 import { styled } from '@mui/material/styles';
 import InputBase from '@mui/material/InputBase';
+import { useState } from 'react';
+import Link from '@mui/material/Link';
+import List from '@mui/material/List';
+import ListItemButton from '@mui/material/ListItemButton';
+import ListItemText from "@mui/material/ListItemText";
+import { MuiThemeProvider } from '@material-ui/core/styles';
+import { customTheme } from "../themes/index.ts";
 
 export default function Profile() {
     const [anchorEl, setAnchorEl] = React.useState(null);
@@ -123,17 +133,17 @@ export default function Profile() {
         borderRadius: theme.shape.borderRadius,
         backgroundColor: 'rgba(171,171,171,0.18)',
         '&:hover': {
-          backgroundColor: 'rgba(171,171,171,0.30)',
+            backgroundColor: 'rgba(171,171,171,0.30)',
         },
         marginRight: theme.spacing(2),
         marginLeft: 0,
         [theme.breakpoints.up('sm')]: {
-          marginLeft: theme.spacing(3),
-          width: '20%',
+            marginLeft: theme.spacing(3),
+            width: '20%',
         },
-      }));
-      
-      const SearchIconWrapper = styled('div')(({ theme }) => ({
+    }));
+
+    const SearchIconWrapper = styled('div')(({ theme }) => ({
         padding: theme.spacing(0, 2),
         height: '100%',
         position: 'absolute',
@@ -141,25 +151,31 @@ export default function Profile() {
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
-      }));
-      
-      const StyledInputBase = styled(InputBase)(({ theme }) => ({
+    }));
+
+    const StyledInputBase = styled(InputBase)(({ theme }) => ({
         color: 'inherit',
         '& .MuiInputBase-input': {
-          padding: theme.spacing(1, 1, 1, 0),
-          // vertical padding + font size from searchIcon
-          paddingLeft: `calc(1em + ${theme.spacing(4)})`,
-          transition: theme.transitions.create('width'),
-          width: '100%',
-          [theme.breakpoints.up('md')]: {
-            width: '20ch',
-          },
+            padding: theme.spacing(1, 1, 1, 0),
+            // vertical padding + font size from searchIcon
+            paddingLeft: `calc(1em + ${theme.spacing(4)})`,
+            transition: theme.transitions.create('width'),
+            width: '100%',
+            [theme.breakpoints.up('md')]: {
+                width: '20ch',
+            },
         },
-      }));
-      
+    }));
+
+    //drawer state
+    const [open, setOpen] = React.useState(false);
+    const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+
+
     return (
         //bad sticky footer fix
         <Box sx={{ flexGrow: 1, minHeight: '600px' }}>
+            <MuiThemeProvider theme={customTheme}>
             <AppBar position="static">
                 <Toolbar>
                     <IconButton
@@ -168,9 +184,37 @@ export default function Profile() {
                         color="inherit"
                         aria-label="open drawer"
                         sx={{ mr: 2 }}
+                        onClick={() => setIsDrawerOpen(true)}
                     >
                         <MenuIcon />
                     </IconButton>
+                    <Drawer anchor='left'
+                        open={isDrawerOpen}
+                        onClose={() => setIsDrawerOpen(false)}
+                    >
+                        <Box p={2} width='250px' textAlign='center' role='presentation'>
+                            <Typography variant='h6' component='div'>
+                                Menu
+                            </Typography>
+                            <List>
+                                <ListItemButton sx={{ textAlign: 'center' }}>
+                                    <ListItemText>
+                                        <Link href="about" color="inherit" underline="none">About</Link>
+                                    </ListItemText>
+                                </ListItemButton>
+                                <ListItemButton sx={{ textAlign: 'center' }}>
+                                    <ListItemText>
+                                        <Link href="login" color="inherit" underline="none">Login/SignUp</Link>
+                                    </ListItemText>
+                                </ListItemButton>
+                                <ListItemButton sx={{ textAlign: 'center' }}>
+                                    <ListItemText>
+                                        <Link href="#" color="inherit" underline="none">Placeholder</Link>
+                                    </ListItemText>
+                                </ListItemButton>
+                            </List>
+                        </Box>
+                    </Drawer>
                     <Typography
                         variant="h6"
                         noWrap
@@ -221,16 +265,16 @@ export default function Profile() {
                     </Box>
                 </Toolbar>
             </AppBar>
-            <Search sx={{ width: '10%', mt: 1}}>
-            <SearchIconWrapper>
-              <SearchIcon />
-            </SearchIconWrapper>
-            <StyledInputBase sx={{ pl: 6}}
-              placeholder="Find Tickets..."
-              inputProps={{ 'aria-label': 'search' }}
-            />
-          </Search>
-            <Box sx={{pl: 2, pt: 2 }}>
+            <Search sx={{ width: '10%', mt: 1 }}>
+                <SearchIconWrapper>
+                    <SearchIcon />
+                </SearchIconWrapper>
+                <StyledInputBase sx={{ pl: 6 }}
+                    placeholder="Find Tickets..."
+                    inputProps={{ 'aria-label': 'search' }}
+                />
+            </Search>
+            <Box sx={{ pl: 2, pt: 2 }}>
                 <Checkbox {...label} defaultChecked /> Open
                 <Checkbox {...label} defaultChecked /> On Hold
                 <Checkbox {...label} defaultChecked /> In Progress
@@ -239,6 +283,7 @@ export default function Profile() {
             {renderMobileMenu}
             {renderMenu}
             <CustomizedTables />
+            </MuiThemeProvider>
         </Box>
 
     );
