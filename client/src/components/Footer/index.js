@@ -8,7 +8,8 @@ const Footer = () => {
 
   return (
     <Box component="footer" sx={{
-      display: 'flex'}} >
+      display: 'flex',
+      mt: 3 }} >
       <Box color="inherit" sx={{
         fontWeight: 'regular',
         fontFamily: 'default',

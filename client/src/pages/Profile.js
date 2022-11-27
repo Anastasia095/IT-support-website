@@ -158,7 +158,8 @@ export default function Profile() {
       }));
       
     return (
-        <Box sx={{ flexGrow: 1 }}>
+        //bad sticky footer fix
+        <Box sx={{ flexGrow: 1, minHeight: '600px' }}>
             <AppBar position="static">
                 <Toolbar>
                     <IconButton
