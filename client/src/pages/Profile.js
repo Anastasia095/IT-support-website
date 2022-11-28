@@ -38,7 +38,6 @@ export default function Profile() {
 
         var data = await response.json();
         setTickets(data);
-        console.log(data);
 
         return response;
     }
@@ -304,7 +303,7 @@ export default function Profile() {
                 </Box>
                 {renderMobileMenu}
                 {renderMenu}
-                <CustomizedTables />
+                <CustomizedTables ticket={ tickets }/>
             </MuiThemeProvider>
         </Box>
 
