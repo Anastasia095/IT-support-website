@@ -1,8 +1,7 @@
 const router = require('express').Router();
 const { Ticket } = require('../../models');
 var cors = require('cors');
-
-// const { Plants, Collection } = require('../../models');
+;
 
 var corsOptions = {
     origin: 'http://127.0.0.1:3000',
