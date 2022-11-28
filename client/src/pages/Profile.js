@@ -35,7 +35,10 @@ export default function Profile() {
             credentials: "include",
             method: 'GET'
         });
-        console.log(response);
+
+        var data = await response.json();
+        setTickets(data);
+        console.log(data);
 
         return response;
     }

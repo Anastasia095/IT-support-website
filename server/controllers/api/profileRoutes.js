@@ -22,7 +22,7 @@ router.get('/', async (req, res) => {
 
         const ticket = ticketData.map((ticket) => ticket.get({ plain: true }));
         console.log(ticket);
-        res.send(ticket);
+        res.json(ticket);
     } catch (err) {
         console.log(err);
         res.status(500).json(err);
