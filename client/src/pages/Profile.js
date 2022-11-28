@@ -20,7 +20,7 @@ import Checkbox from '@mui/material/Checkbox';
 import SearchIcon from '@mui/icons-material/Search';
 import { styled } from '@mui/material/styles';
 import InputBase from '@mui/material/InputBase';
-import { useState } from 'react';
+import { useState, useEffect  } from 'react';
 import Link from '@mui/material/Link';
 import List from '@mui/material/List';
 import ListItemButton from '@mui/material/ListItemButton';
@@ -29,6 +29,25 @@ import { MuiThemeProvider } from '@material-ui/core/styles';
 import { customTheme } from "../themes/index.ts";
 
 export default function Profile() {
+
+    async function getTickets() {
+        const response = await fetch('http://127.0.0.1:3001/api/profile', {
+            credentials: "include",
+            method: 'GET'
+        });
+        console.log(response);
+
+        return response;
+    }
+
+
+    const [tickets, setTickets] = useState('');
+    useEffect(() => {
+        getTickets();
+   }, []);
+
+    console.log(tickets);
+
     const [anchorEl, setAnchorEl] = React.useState(null);
     const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
 
@@ -176,113 +195,113 @@ export default function Profile() {
         //bad sticky footer fix
         <Box sx={{ flexGrow: 1, minHeight: '600px' }}>
             <MuiThemeProvider theme={customTheme}>
-            <AppBar position="static">
-                <Toolbar>
-                    <IconButton
-                        size="large"
-                        edge="start"
-                        color="inherit"
-                        aria-label="open drawer"
-                        sx={{ mr: 2 }}
-                        onClick={() => setIsDrawerOpen(true)}
-                    >
-                        <MenuIcon />
-                    </IconButton>
-                    <Drawer anchor='left'
-                        open={isDrawerOpen}
-                        onClose={() => setIsDrawerOpen(false)}
-                    >
-                        <Box p={2} width='250px' textAlign='center' role='presentation'>
-                            <Typography variant='h6' component='div'>
-                                Menu
-                            </Typography>
-                            <List>
-                                <ListItemButton sx={{ textAlign: 'center' }}>
-                                    <ListItemText>
-                                        <Link href="about" color="inherit" underline="none">About</Link>
-                                    </ListItemText>
-                                </ListItemButton>
-                                <ListItemButton sx={{ textAlign: 'center' }}>
-                                    <ListItemText>
-                                        <Link href="login" color="inherit" underline="none">Login/SignUp</Link>
-                                    </ListItemText>
-                                </ListItemButton>
-                                <ListItemButton sx={{ textAlign: 'center' }}>
-                                    <ListItemText>
-                                        <Link href="#" color="inherit" underline="none">Placeholder</Link>
-                                    </ListItemText>
-                                </ListItemButton>
-                            </List>
+                <AppBar position="static">
+                    <Toolbar>
+                        <IconButton
+                            size="large"
+                            edge="start"
+                            color="inherit"
+                            aria-label="open drawer"
+                            sx={{ mr: 2 }}
+                            onClick={() => setIsDrawerOpen(true)}
+                        >
+                            <MenuIcon />
+                        </IconButton>
+                        <Drawer anchor='left'
+                            open={isDrawerOpen}
+                            onClose={() => setIsDrawerOpen(false)}
+                        >
+                            <Box p={2} width='250px' textAlign='center' role='presentation'>
+                                <Typography variant='h6' component='div'>
+                                    Menu
+                                </Typography>
+                                <List>
+                                    <ListItemButton sx={{ textAlign: 'center' }}>
+                                        <ListItemText>
+                                            <Link href="about" color="inherit" underline="none">About</Link>
+                                        </ListItemText>
+                                    </ListItemButton>
+                                    <ListItemButton sx={{ textAlign: 'center' }}>
+                                        <ListItemText>
+                                            <Link href="login" color="inherit" underline="none">Login/SignUp</Link>
+                                        </ListItemText>
+                                    </ListItemButton>
+                                    <ListItemButton sx={{ textAlign: 'center' }}>
+                                        <ListItemText>
+                                            <Link href="#" color="inherit" underline="none">Placeholder</Link>
+                                        </ListItemText>
+                                    </ListItemButton>
+                                </List>
+                            </Box>
+                        </Drawer>
+                        <Typography
+                            variant="h6"
+                            noWrap
+                            component="div"
+                            sx={{ display: { xs: 'none', sm: 'block' } }}
+                        >
+                            Welcome Back User!
+                        </Typography>
+                        <Box sx={{ flexGrow: 1 }} />
+                        <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
+                            <IconButton size="large" aria-label="show 4 new mails" color="inherit">
+                                <Badge badgeContent={4} color="error">
+                                    <MailIcon />
+                                </Badge>
+                            </IconButton>
+                            <IconButton
+                                size="large"
+                                aria-label="show 17 new notifications"
+                                color="inherit"
+                            >
+                                <Badge badgeContent={17} color="error">
+                                    <NotificationsIcon />
+                                </Badge>
+                            </IconButton>
+                            <IconButton
+                                size="large"
+                                edge="end"
+                                aria-label="account of current user"
+                                aria-controls={menuId}
+                                aria-haspopup="true"
+                                onClick={handleProfileMenuOpen}
+                                color="inherit"
+                            >
+                                <AccountCircle />
+                            </IconButton>
                         </Box>
-                    </Drawer>
-                    <Typography
-                        variant="h6"
-                        noWrap
-                        component="div"
-                        sx={{ display: { xs: 'none', sm: 'block' } }}
-                    >
-                        Welcome Back User!
-                    </Typography>
-                    <Box sx={{ flexGrow: 1 }} />
-                    <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
-                        <IconButton size="large" aria-label="show 4 new mails" color="inherit">
-                            <Badge badgeContent={4} color="error">
-                                <MailIcon />
-                            </Badge>
-                        </IconButton>
-                        <IconButton
-                            size="large"
-                            aria-label="show 17 new notifications"
-                            color="inherit"
-                        >
-                            <Badge badgeContent={17} color="error">
-                                <NotificationsIcon />
-                            </Badge>
-                        </IconButton>
-                        <IconButton
-                            size="large"
-                            edge="end"
-                            aria-label="account of current user"
-                            aria-controls={menuId}
-                            aria-haspopup="true"
-                            onClick={handleProfileMenuOpen}
-                            color="inherit"
-                        >
-                            <AccountCircle />
-                        </IconButton>
-                    </Box>
-                    <Box sx={{ display: { xs: 'flex', md: 'none' } }}>
-                        <IconButton
-                            size="large"
-                            aria-label="show more"
-                            aria-controls={mobileMenuId}
-                            aria-haspopup="true"
-                            onClick={handleMobileMenuOpen}
-                            color="inherit"
-                        >
-                            <MoreIcon />
-                        </IconButton>
-                    </Box>
-                </Toolbar>
-            </AppBar>
-            <Search sx={{ width: '10%', mt: 1 }}>
-                <SearchIconWrapper>
-                    <SearchIcon />
-                </SearchIconWrapper>
-                <StyledInputBase sx={{ pl: 6 }}
-                    placeholder="Find Tickets..."
-                    inputProps={{ 'aria-label': 'search' }}
-                />
-            </Search>
-            <Box sx={{ pl: 2, pt: 2 }}>
-                <Checkbox {...label} defaultChecked /> Open
-                <Checkbox {...label} defaultChecked /> On Hold
-                <Checkbox {...label} defaultChecked /> In Progress
-                <Checkbox {...label} defaultChecked /> Closed
-            </Box>
-            {renderMobileMenu}
-            {renderMenu}
-            <CustomizedTables />
+                        <Box sx={{ display: { xs: 'flex', md: 'none' } }}>
+                            <IconButton
+                                size="large"
+                                aria-label="show more"
+                                aria-controls={mobileMenuId}
+                                aria-haspopup="true"
+                                onClick={handleMobileMenuOpen}
+                                color="inherit"
+                            >
+                                <MoreIcon />
+                            </IconButton>
+                        </Box>
+                    </Toolbar>
+                </AppBar>
+                <Search sx={{ width: '10%', mt: 1 }}>
+                    <SearchIconWrapper>
+                        <SearchIcon />
+                    </SearchIconWrapper>
+                    <StyledInputBase sx={{ pl: 6 }}
+                        placeholder="Find Tickets..."
+                        inputProps={{ 'aria-label': 'search' }}
+                    />
+                </Search>
+                <Box sx={{ pl: 2, pt: 2 }}>
+                    <Checkbox {...label} defaultChecked /> Open
+                    <Checkbox {...label} defaultChecked /> On Hold
+                    <Checkbox {...label} defaultChecked /> In Progress
+                    <Checkbox {...label} defaultChecked /> Closed
+                </Box>
+                {renderMobileMenu}
+                {renderMenu}
+                <CustomizedTables />
             </MuiThemeProvider>
         </Box>
 

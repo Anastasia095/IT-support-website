@@ -3,13 +3,13 @@ const { Ticket } = require('../../models');
 var cors = require('cors');
 
 var corsOptions = {
-    origin: 'http://127.0.0.1:3000/profile',
+    origin: 'http://127.0.0.1:3000',
     credentials: true
 };
 
 router.use(cors(corsOptions));
 
-router.get('/profile', async (req, res) => {
+router.get('/', async (req, res) => {
     try {
         console.log(req.session);
         console.log(req.body);
@@ -21,6 +21,7 @@ router.get('/profile', async (req, res) => {
         })
 
         const ticket = ticketData.map((ticket) => ticket.get({ plain: true }));
+        console.log(ticket);
         res.send(ticket);
     } catch (err) {
         console.log(err);
