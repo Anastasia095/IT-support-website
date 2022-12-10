@@ -22,6 +22,7 @@ import ListItemText from "@mui/material/ListItemText";
 import { MuiThemeProvider } from '@material-ui/core/styles';
 import { customTheme } from "../../themes/index.ts";
 import useMediaQuery from "@mui/material/useMediaQuery";
+import { Navigate  } from 'react-router-dom';
 
 
 const style = {
@@ -44,14 +45,14 @@ const modalStyle = {
 
 function Navbar() {
 
-  function submitTicket() {
+  async function submitTicket() {
 
     const title = value;
     const ticket_body = textValue;
 
     // alert('Title is ' + title + ' body is '+ body);
     if (title && ticket_body !== undefined) {
-      const response = fetch(`http://127.0.0.1:3001/api/send`, {
+      const response = await fetch(`http://127.0.0.1:3001/api/send`, {
         credentials: 'include',
         method: 'POST',
         body: JSON.stringify({ title, ticket_body }),
@@ -62,9 +63,9 @@ function Navbar() {
       });
 
       if (response.ok) {
-        alert('Success');
+        document.location.replace('/profile');
       } else {
-        alert(response);
+        console.log(response);
       };
     };
   };
