@@ -40,7 +40,7 @@ export default function Profile() {
         setTickets(data);
 
         return response;
-    }
+    };
 
 
     const [tickets, setTickets] = useState('');
@@ -49,6 +49,7 @@ export default function Profile() {
    }, []);
 
     console.log(tickets);
+    console.log(tickets[tickets.length - 1]);
 
     const [anchorEl, setAnchorEl] = React.useState(null);
     const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
@@ -242,7 +243,7 @@ export default function Profile() {
                             component="div"
                             sx={{ display: { xs: 'none', sm: 'block' } }}
                         >
-                            Welcome Back User!
+                            Welcome Back { tickets.length === 0 ? " " : tickets[tickets.length - 1].user_name }!
                         </Typography>
                         <Box sx={{ flexGrow: 1 }} />
                         <Box sx={{ display: { xs: 'none', md: 'flex' } }}>

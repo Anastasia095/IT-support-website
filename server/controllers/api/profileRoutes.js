@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { Ticket } = require('../../models');
+const { Ticket, User } = require('../../models');
 var cors = require('cors');
 
 var corsOptions = {
@@ -18,10 +18,21 @@ router.get('/', async (req, res) => {
             where: {
                 user_id: req.session.user_id
             }
-        })
+        });
+
+        const userInfo = await User.findAll({
+            where: {
+                id: req.session.user_id
+            }
+        });
 
         const ticket = ticketData.map((ticket) => ticket.get({ plain: true }));
-        console.log(ticket);
+        const user = userInfo.map((user) => user.get({ plain: true }));
+        const userData = {
+            user_name: user[0].user_name
+        }
+        ticket.push(userData);
+        console.log(ticket[ticket.length - 1].user_name);
         res.json(ticket);
     } catch (err) {
         console.log(err);

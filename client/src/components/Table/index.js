@@ -21,34 +21,34 @@ export default function BasicTable(props) {
 
   // console.log(data.length);
 
-    return (
-      <TableContainer component={Paper} sx={{ maxWidth: '97%', m: 'auto' }}>
-        <Table sx={{ minWidth: 300 }} aria-label="simple table">
-          <TableHead>
-            <TableRow>
-              <TableCell>Ticket ID</TableCell>
-              <TableCell align="right">Subject</TableCell>
-              <TableCell align="right">Status</TableCell>
-              <TableCell align="right">Last Update</TableCell>
-              <TableCell align="right">Assigned</TableCell>
+  return (
+    <TableContainer component={Paper} sx={{ maxWidth: '97%', m: 'auto' }}>
+      <Table sx={{ minWidth: 300 }} aria-label="simple table">
+        <TableHead>
+          <TableRow>
+            <TableCell>Ticket ID</TableCell>
+            <TableCell align="right">Subject</TableCell>
+            <TableCell align="right">Status</TableCell>
+            <TableCell align="right">Last Update</TableCell>
+            <TableCell align="right">Assigned</TableCell>
+          </TableRow>
+        </TableHead>
+        <TableBody>
+          {/* {data.map((row) => (
+            <TableRow
+              key={row.id}
+              sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
+            >
+              <TableCell component="th" scope="row">
+                {row.id}
+              </TableCell>
+              <TableCell align="right">{row.title}</TableCell>
+              <TableCell align="right">{row.status}</TableCell>
+              <TableCell align="right">{row.updatedAt}</TableCell>
             </TableRow>
-          </TableHead>
-          <TableBody>
-            {data.map((row) => (
-              <TableRow
-                key={row.id}
-                sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
-              >
-                <TableCell component="th" scope="row">
-                  {row.id}
-                </TableCell>
-                <TableCell align="right">{row.title}</TableCell>
-                <TableCell align="right">{row.status}</TableCell>
-                <TableCell align="right">{row.updatedAt}</TableCell>
-              </TableRow>
-            ))}
-          </TableBody>
-        </Table>
-      </TableContainer>
-    );
-  };
+          ))} */}
+        </TableBody>
+      </Table>
+    </TableContainer>
+  );
+};
