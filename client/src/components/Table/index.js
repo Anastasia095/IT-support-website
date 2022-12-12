@@ -17,7 +17,9 @@ export default function BasicTable(props) {
     return (
       <h3>No Tickets Yet</h3>
     );
-  };
+  } else {
+    data.pop();
+  }
 
   // console.log(data.length);
 
@@ -34,7 +36,7 @@ export default function BasicTable(props) {
           </TableRow>
         </TableHead>
         <TableBody>
-          {/* {data.map((row) => (
+          {data.map((row) => (
             <TableRow
               key={row.id}
               sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
@@ -46,7 +48,7 @@ export default function BasicTable(props) {
               <TableCell align="right">{row.status}</TableCell>
               <TableCell align="right">{row.updatedAt}</TableCell>
             </TableRow>
-          ))} */}
+          ))}
         </TableBody>
       </Table>
     </TableContainer>
