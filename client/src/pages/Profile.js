@@ -20,7 +20,7 @@ import Checkbox from '@mui/material/Checkbox';
 import SearchIcon from '@mui/icons-material/Search';
 import { styled } from '@mui/material/styles';
 import InputBase from '@mui/material/InputBase';
-import { useState, useEffect  } from 'react';
+import { useState, useEffect } from 'react';
 import Link from '@mui/material/Link';
 import List from '@mui/material/List';
 import ListItemButton from '@mui/material/ListItemButton';
@@ -42,11 +42,10 @@ export default function Profile() {
         return response;
     };
 
-
     const [tickets, setTickets] = useState('');
     useEffect(() => {
         getTickets();
-   }, []);
+    }, []);
 
     console.log(tickets);
     console.log(tickets[tickets.length - 1]);
@@ -243,7 +242,7 @@ export default function Profile() {
                             component="div"
                             sx={{ display: { xs: 'none', sm: 'block' } }}
                         >
-                            Welcome Back { tickets.length === 0 ? " " : tickets[tickets.length - 1].user_name }!
+                            Welcome Back {tickets.length === 0 ? " " : tickets[tickets.length - 1].user_name}!
                         </Typography>
                         <Box sx={{ flexGrow: 1 }} />
                         <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
@@ -304,9 +303,9 @@ export default function Profile() {
                 </Box>
                 {renderMobileMenu}
                 {renderMenu}
-                <CustomizedTables ticket={ tickets }/>
+                <CustomizedTables ticket={tickets} />
             </MuiThemeProvider>
         </Box>
 
     );
-}
+};

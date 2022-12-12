@@ -9,6 +9,7 @@ import Paper from '@mui/material/Paper';
 
 
 
+
 export default function BasicTable(props) {
 
   const data = props.ticket;
@@ -23,12 +24,39 @@ export default function BasicTable(props) {
 
   // console.log(data.length);
 
+  function test(){
+    console.log(ticketID);
+  };
+  var ticketID = 0;
+  
+//   async function singleTicket() {
+
+//     const ticket_id = value;
+
+//     if (ticket_id !== undefined) {
+//         const response = await fetch(`http://127.0.0.1:3001/api/profile/t/` + ticket_id, {
+//             credentials: 'include',
+//             method: 'GET',
+//             headers: {
+//                 'Content-Type': 'application/json',
+//                 //line above is part of fetch()
+//             },
+//         });
+
+//         if (response.ok) {
+//             console.log("okay");
+//         } else {
+//             console.log(response);
+//         };
+//     };
+// };
+
   return (
     <TableContainer component={Paper} sx={{ maxWidth: '97%', m: 'auto' }}>
       <Table sx={{ minWidth: 300 }} aria-label="simple table">
         <TableHead>
           <TableRow>
-            <TableCell>Ticket ID</TableCell>
+            <TableCell >Ticket ID</TableCell>
             <TableCell align="right">Subject</TableCell>
             <TableCell align="right">Status</TableCell>
             <TableCell align="right">Last Update</TableCell>
@@ -40,10 +68,11 @@ export default function BasicTable(props) {
             <TableRow
               key={row.id}
               sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
+              onClick={() => test()}
             >
-              <TableCell component="th" scope="row">
-                {row.id}
-              </TableCell>
+              <TableCell value={ticketID} component="th" scope="row">
+                {row.id}</TableCell>
+                
               <TableCell align="right">{row.title}</TableCell>
               <TableCell align="right">{row.status}</TableCell>
               <TableCell align="right">{row.updatedAt}</TableCell>

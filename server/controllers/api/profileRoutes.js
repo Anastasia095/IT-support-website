@@ -40,4 +40,34 @@ router.get('/', async (req, res) => {
     };
 });
 
+router.get('/t/:id', async (req, res) => {
+    try {
+        console.log(req.session);
+        console.log(req.body);
+
+        const ticketData = await Ticket.findAll({
+            where: {
+                user_id: req.session.user_id
+            }
+        });
+
+        const userInfo = await User.findAll({
+            where: {
+                id: req.session.user_id
+            }
+        });
+
+        const ticket = ticketData.map((ticket) => ticket.get({ plain: true }));
+        const user = userInfo.map((user) => user.get({ plain: true }));
+        const userData = {
+            user_name: user[0].user_name
+        }
+        ticket.push(userData);
+        console.log(ticket[ticket.length - 1].user_name);
+        res.json(ticket);
+    } catch (err) {
+        console.log(err);
+        res.status(500).json(err);
+    };
+});
 module.exports = router;

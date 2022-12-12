@@ -22,7 +22,7 @@ import ListItemText from "@mui/material/ListItemText";
 import { MuiThemeProvider } from '@material-ui/core/styles';
 import { customTheme } from "../../themes/index.ts";
 import useMediaQuery from "@mui/material/useMediaQuery";
-import { Navigate  } from 'react-router-dom';
+import { useNavigate  } from 'react-router-dom';
 
 
 const style = {
@@ -44,7 +44,7 @@ const modalStyle = {
 };
 
 function Navbar() {
-
+  const navigate = useNavigate();
   async function submitTicket() {
 
     const title = value;
@@ -63,13 +63,12 @@ function Navbar() {
       });
 
       if (response.ok) {
-        document.location.replace('/profile');
+        navigate("/profile");
       } else {
         console.log(response);
       };
     };
   };
-
   // const large = useMediaQuery(customTheme.breakpoints.up("lg"));
   // const medium = useMediaQuery(customTheme.breakpoints.up("md"));
   const small = useMediaQuery(customTheme.breakpoints.up("sm"));

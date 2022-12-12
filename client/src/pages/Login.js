@@ -38,7 +38,7 @@ export default function SignIn() {
     });
 
     if (response.ok) {
-      navigate("/");
+      navigate("/profile");
     } else {
       console.log(response);
     };
