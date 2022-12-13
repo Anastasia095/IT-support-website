@@ -11,10 +11,14 @@ import { useState, useEffect } from 'react';
 
 
 export default function BasicTable(props) {
-  function updateTicket(id){
-    console.log(id);
+  function updateTicket(id) {
     setTicketId(id);
-  };  
+    console.log(typeof(ticketid));
+    if (typeof(ticketid) == 'number') {
+      console.log(ticketid);
+      singleTicket(ticketid);
+    }
+  };
   const [ticketid, setTicketId] = useState('');
   useEffect(() => {
     updateTicket();
@@ -30,33 +34,25 @@ export default function BasicTable(props) {
     data.pop();
   }
 
-  // console.log(data.length);
 
-
-
-
-
-//   async function singleTicket() {
-
-//     const ticket_id = value;
-
-//     if (ticket_id !== undefined) {
-//         const response = await fetch(`http://127.0.0.1:3001/api/profile/t/` + ticket_id, {
-//             credentials: 'include',
-//             method: 'GET',
-//             headers: {
-//                 'Content-Type': 'application/json',
-//                 //line above is part of fetch()
-//             },
-//         });
-
-//         if (response.ok) {
-//             console.log("okay");
-//         } else {
-//             console.log(response);
-//         };
-//     };
-// };
+  async function singleTicket() {
+    if (typeof(ticketid) == 'number')  {
+      console.log(typeof(ticketid));
+      const response = await fetch(`http://127.0.0.1:3001/api/profile/t/` + ticketid, {
+        credentials: 'include',
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+          //line above is part of fetch()
+        },
+      });
+    if (response.ok) {
+      console.log("okay");
+    } else {
+      console.log(response);
+    };
+  };
+  };
 
   return (
     <TableContainer component={Paper} sx={{ maxWidth: '97%', m: 'auto' }}>
@@ -76,11 +72,11 @@ export default function BasicTable(props) {
               key={row.id}
               sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
               onClick={() => updateTicket(row.id)}
-              
+
             >
               <TableCell component="th" scope="row">
                 {row.id}</TableCell>
-                
+
               <TableCell align="right">{row.title}</TableCell>
               <TableCell align="right">{row.status}</TableCell>
               <TableCell align="right">{row.updatedAt}</TableCell>
