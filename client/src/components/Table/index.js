@@ -6,11 +6,19 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
-
+import { useState, useEffect } from 'react';
 
 
 
 export default function BasicTable(props) {
+  function updateTicket(id){
+    console.log(id);
+    setTicketId(id);
+  };  
+  const [ticketid, setTicketId] = useState('');
+  useEffect(() => {
+    updateTicket();
+  }, []);
 
   const data = props.ticket;
   if (data.length === 0) {
@@ -24,11 +32,10 @@ export default function BasicTable(props) {
 
   // console.log(data.length);
 
-  function test(){
-    console.log(ticketID);
-  };
-  var ticketID = 0;
-  
+
+
+
+
 //   async function singleTicket() {
 
 //     const ticket_id = value;
@@ -68,9 +75,10 @@ export default function BasicTable(props) {
             <TableRow
               key={row.id}
               sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
-              onClick={() => test()}
+              onClick={() => updateTicket(row.id)}
+              
             >
-              <TableCell value={ticketID} component="th" scope="row">
+              <TableCell component="th" scope="row">
                 {row.id}</TableCell>
                 
               <TableCell align="right">{row.title}</TableCell>

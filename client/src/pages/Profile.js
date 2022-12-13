@@ -18,15 +18,16 @@ import MoreIcon from '@mui/icons-material/MoreVert';
 import CustomizedTables from '../components/Table';
 import Checkbox from '@mui/material/Checkbox';
 import SearchIcon from '@mui/icons-material/Search';
-import { styled } from '@mui/material/styles';
-import InputBase from '@mui/material/InputBase';
-import { useState, useEffect } from 'react';
 import Link from '@mui/material/Link';
 import List from '@mui/material/List';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemText from "@mui/material/ListItemText";
+import InputBase from '@mui/material/InputBase';
+import { styled } from '@mui/material/styles';
+import { useState, useEffect } from 'react';
 import { MuiThemeProvider } from '@material-ui/core/styles';
 import { customTheme } from "../themes/index.ts";
+
 
 export default function Profile() {
 
