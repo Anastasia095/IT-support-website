@@ -40,11 +40,10 @@ router.get('/', async (req, res) => {
     };
 });
 
+
+//search ticket by ID, probably find by pk? or findOne where id 
 router.get('/t/:id', async (req, res) => {
     try {
-        console.log(req.session);
-        console.log(req.body);
-
         const ticketData = await Ticket.findAll({
             where: {
                 user_id: req.session.user_id
